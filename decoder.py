@@ -24,8 +24,15 @@ def decoder(encoded, marker):
     --------------
     Your function must decode and return the original string.
     """
-    
-    return None
+    l = list(encoded)
+    first = ''
+    for index in range(len(l)):
+        first += l[index]
+        if l[index] == marker:
+            break
+    last = l[index+1:] [::-1]
+
+    return first[:-1] + ''.join(last)
     
 
 def test():
