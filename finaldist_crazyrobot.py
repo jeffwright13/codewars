@@ -19,11 +19,26 @@ def finaldist_crazyrobot(moves, init_pos):
     finaldist_crazyrobot(moves, init_pos) == 7.07106781187
     # distance from (20, 18) to (15, 23)
     """
-    pass
+    curr_pos = [init_pos[0], init_pos[1]]
+
+    for move in moves:
+        if move[0] == 'R':
+            curr_pos[0] += move[1]
+        if move[0] == 'L':
+            curr_pos[0] -= move[1]
+        if move[0] == 'U':
+            curr_pos[1] += move[1]
+        if move[0] == 'D':
+            curr_pos[1] -= move[1]
+
+    print 'Final pos:', curr_pos
+    dist_x = curr_pos[0] - init_pos[0]
+    dist_y = curr_pos[1] - init_pos[1]
+    return round((dist_x**2 + dist_y**2) ** 0.5, 4)
 
 def test_finaldist_crazyrobot():
-    assert finaldist_crazyrobot([('R', 2), ('U', 3), ('L', 1), ('D', 6)], (0, 0)) == 3.16227766017
-    assert finaldist_crazyrobot([('R', 32), ('D', 16), ('U', 31), ('L', 26), ('D', 14),('U', 4), ('R', 5), ('L', 16)], (20, 18)) == 7.07106781187
+    assert finaldist_crazyrobot([('R', 2), ('U', 3), ('L', 1), ('D', 6)], (0, 0)) == 3.1623
+    assert finaldist_crazyrobot([('R', 32), ('D', 16), ('U', 31), ('L', 26), ('D', 14),('U', 4), ('R', 5), ('L', 16)], (20, 18)) == 7.0711
 
 if __name__ == "__main__":
     main()
