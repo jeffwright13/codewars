@@ -18,21 +18,14 @@ def days_until_christmas(d):
     if d == None:
         return None
 
-    print d, type(d)
-    print d.day, type(d.day), d.month, type(d.month), d.year, type(d.year)
-
     xmas_this = datetime.date(d.year, 12, 25)
     xmas_next = datetime.date(d.year + 1, 12, 25)
-    print "xmas:", xmas_this, type(xmas_this)
 
     if d == xmas_this:
-        print "It's Xmas!"
         return 0
     elif d < xmas_this:
-        print "Not Xmas Yet!"
         return (xmas_this - d).days
     else:
-        print "Xmas Is Over!"
         return (xmas_next - d).days
 
 def test_days_until_christmas():
