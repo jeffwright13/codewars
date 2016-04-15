@@ -10,16 +10,16 @@ def climb(n):
     if n <= 0:
         return 'Error'
 
-    seq = [1]
-    for i in range(1, n):
-        seq.append(
-    
+    result = []
 
-    return []
+    while n:
+        result.append(n)
+        n /= 2
+    return result[::-1]
 
 def test_climb():
     assert climb(0)  == 'Error'
-    assert climb(-1)  == 'Error'
+    assert climb(-1) == 'Error'
     assert climb(13) == [1, 3, 6, 13]
     assert climb(10) == [1, 2, 5, 10]
     assert climb(1)  == [1]
