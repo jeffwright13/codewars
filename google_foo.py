@@ -1,5 +1,5 @@
 def main():
-    print google_foo(None)
+    print google_foo(None, None, None)
 
 def google_foo(x, y, z):
     """
@@ -14,20 +14,61 @@ def google_foo(x, y, z):
     Write a function called answer(x, y, z) that takes as input the 3 numbers on the date cards. You may assume that at least one valid representation of a date can be constructed from the cards.
 
     If there is only one valid representation, the function should return it as a string, in the form MM/DD/YY. If there are multiple valid representations, the function should return the string "Ambiguous." Each of x, y, z will be between 1 to 99 inclusive. You may also assume that there are no leap years.
-        """
-    years = range(0, 100)
-    months = range(1, 13)
-    days = range(1, 32)
-    print years, months, days
+    """
+    # Sort the input numbers into type:
+    # year; year or day; month or year or day
+    # This code working.
+    types = []
+    for num in [x, y, z]:
+        if num <=0 or num >= 100:
+            return 'Invalid'
+        if 32 <= num <= 99:
+            types.append('year')
+        elif 13 <= num <= 31:
+            types.append('year_day')
+        else:
+            types.append('month_year_day')
+    print '(x,y,z): ', (x,y,z)
+    print 'types: ', types
+
     
-    
-    
+    # If all nums are equal we can return result immediately
+    if x == y and x == z:
+        return '{:02}/{:02}/{:02}'.format(x, y, z)
+
+
+    # Depending on input types, return result
+    # This code NOT working in general case.
+    if 'year' in types:
+        print 'In first main decision branch'
+        
+        if types[0] == 'year':           # x is the year
+            if y == z:
+                return '{:02}/{:02}/{:02}'.format(y, z, x)
+        elif types[1] == 'year':         # y is the year
+            if x == z:
+                return '{:02}/{:02}/{:02}'.format(x, z, y)
+        elif types[2] == 'year':         # z is the year
+            if x == y:
+                return '{:02}/{:02}/{:02}'.format(x, y, z)
+        else:
+            pass
+    else:
+        print 'In second main decision branch'
     
     return None
 
 def test_google_foo():
-    assert google_foo(19, 19, 3) == "03/19/19"
-    assert google_foo(2, 30, 3)  == "Ambiguous"
+    assert google_foo(2, 130, 3)  == "Invalid"
+    assert google_foo(1, 1, 1)    == "01/01/01"
+    assert google_foo(11, 11, 11) == "11/11/11"
+    assert google_foo(12, 94, 12) == "12/12/94"
+    assert google_foo(94, 12, 12) == "12/12/94"
+    assert google_foo(12, 12, 94) == "12/12/94"
+    assert google_foo(19, 19, 3)  == "03/19/19"
+    assert google_foo(60, 19, 3)  == "03/19/60"
+    assert google_foo(60, 11, 3)  == "Ambiguous"
+    assert google_foo(2, 30, 3)   == "Ambiguous"
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

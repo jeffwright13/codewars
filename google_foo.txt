@@ -1,3 +1,5 @@
+https://www.google.com/foobar/?eid=7nAXV4DWIYXYeJ7yiMgE&usg=AG3vBD2Lqwj9-a2D3T1cBPyVb2O85KRWGw
+
 Mounting /home/guest...
 Welcome to foobar version 48-beta (2016-02-16-09:40+0000)
 
@@ -138,14 +140,32 @@ foobar:~/origins_and_order jeff.washcloth$
 
 
 Jeff's Pseudo-Code:
-===================
+(man this is some ugly-ass code)
+================================
 for each num in (x, y, z):
     if num <= 0 or num >= 99:
-        invalid input; bail out of function altogether
-    if 32 <= num <= 99:
-        num is of type 'year'
-    else if 13 <= num <= 31:
-        num is 'month'
-    if 1 <= num <= 12:
-        num is of type 'day'
+        return "Invalid'
 
+    if 32 <= num <= 99:
+        num is type 'year'
+    else if 13 <= num <= 31:
+        num is type 'year_day'
+    if 1 <= num <= 12:
+        num is type 'year_month_day'
+
+if any(x, y, z) is type 'year':
+    if other two nums are equal:
+        return (other_two, other_two, year)
+    else:
+        if one is type year_day: #year_day must be day since we already have year;
+                                 #so, year_day_month must be day
+            return (year_day_month, year_day, year)
+        else:
+            return 'Ambiguous'
+else:
+    if all three are equal:
+        return (x, y, z)
+    else if two are type year_day:
+        return (third, year_day, year_day)
+
+return 'Ambiguous'
