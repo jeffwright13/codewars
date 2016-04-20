@@ -65,8 +65,8 @@ def test_google_foo():
     assert google_foo(12, 94, 12) == "12/12/94"
     assert google_foo(94, 12, 12) == "12/12/94"
     assert google_foo(12, 12, 94) == "12/12/94"
-    assert google_foo(19, 19, 3)  == "03/19/19"
     assert google_foo(60, 19, 3)  == "03/19/60"
+    assert google_foo(19, 19, 3)  == "03/19/19"
     assert google_foo(60, 11, 3)  == "Ambiguous"
     assert google_foo(2, 30, 3)   == "Ambiguous"
 
