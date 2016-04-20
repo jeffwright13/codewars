@@ -136,3 +136,16 @@ def​ ​answer(x,​ ​y,​ ​z):
 ​ ​​ ​​ ​​ ​#​ ​your​ ​code​ ​here
 foobar:~/origins_and_order jeff.washcloth$  
 
+
+Jeff's Pseudo-Code:
+===================
+for each num in (x, y, z):
+    if num <= 0 or num >= 99:
+        invalid input; bail out of function altogether
+    if 32 <= num <= 99:
+        num is of type 'year'
+    else if 13 <= num <= 31:
+        num is 'month'
+    if 1 <= num <= 12:
+        num is of type 'day'
+

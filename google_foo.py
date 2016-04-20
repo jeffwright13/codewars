@@ -15,6 +15,14 @@ def google_foo(x, y, z):
 
     If there is only one valid representation, the function should return it as a string, in the form MM/DD/YY. If there are multiple valid representations, the function should return the string "Ambiguous." Each of x, y, z will be between 1 to 99 inclusive. You may also assume that there are no leap years.
         """
+    years = range(0, 100)
+    months = range(1, 13)
+    days = range(1, 32)
+    print years, months, days
+    
+    
+    
+    
     return None
 
 def test_google_foo():
