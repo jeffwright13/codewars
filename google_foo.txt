@@ -138,34 +138,68 @@ def​ ​answer(x,​ ​y,​ ​z):
 ​ ​​ ​​ ​​ ​#​ ​your​ ​code​ ​here
 foobar:~/origins_and_order jeff.washcloth$  
 
+$ verify solution.py
+Verifying solution...
+NameError on line 4
+foobar:~/origins_and_order jeff.washcloth$ verify solution.py
+Verifying solution...
+Error(400): Bad request.
+foobar:~/origins_and_order jeff.washcloth$ verify solution.py
+Verifying solution...
+All test cases passed.
 
-Jeff's Pseudo-Code:
-(man this is some ugly-ass code)
-================================
-for each num in (x, y, z):
-    if num <= 0 or num >= 99:
-        return "Invalid'
+$ submit solution.py
+Are you sure you want to submit your solution?
+[Y]es or [N]o: Y
+Submitting solution...
+Submission: SUCCESSFUL. Completed in: 1 day, 5 hrs, 36 secs.
 
-    if 32 <= num <= 99:
-        num is type 'year'
-    else if 13 <= num <= 31:
-        num is type 'year_day'
-    if 1 <= num <= 12:
-        num is type 'year_month_day'
 
-if any(x, y, z) is type 'year':
-    if other two nums are equal:
-        return (other_two, other_two, year)
-    else:
-        if one is type year_day: #year_day must be day since we already have year;
-                                 #so, year_day_month must be day
-            return (year_day_month, year_day, year)
-        else:
-            return 'Ambiguous'
-else:
-    if all three are equal:
-        return (x, y, z)
-    else if two are type year_day:
-        return (third, year_day, year_day)
 
-return 'Ambiguous'
+
+                                                                                        @\
+                                                                               @@     @\~@
+                                                                              @%£@   % \~~@
+                                                                             @\\\\\%  %)))))))@
+                                                                             @~~\\~~@\\\\\\))@
+                                                                              @\\\\\\@ \\\\)@
+                                                                             @~\~~~@  %\\@
+                                                         @$$%\\\@@           @\~~\\\\@  $$$@\
+                                                     /@@\\$  \ \\\%\@        @@\\$\\\%@\%    @
+                                                   @@\\\\\~~~~ ~\  \\\@@$    @ ~\)))))\\\\    $@
+                                         $\@\@@$  @\\\\\~~~~~~           %\\  @\\\))))@@@\\\    $@
+                                        @       $@\\\\\\\\\\\~~~~~            %%\\))))@  @)\\    $@
+                                       @@      @\\\\\\\\\~~~~~~~                \\))))@@@))\     @
+                                        @      @\\\\\\\\\~~~~~~~                 )))))))))     ~ @
+                                         @@\  $@\\\\\\\\\\\~~~~~~~                  ))))))       @
+                                           @@@ @\\\\\\\\\\\~~~~~~~~~~                     $\@@
+                                                $$$$$$\\\\\\~~~~~                ~~\%%@@@\\
+                                                @\\\\~~~~~~                       ~$$@
+                                                 @\\\\~~~~~   %%%@@@@\\               $
+                                                  @$))~~~~~   /      @@@@@@      ~~~~~$
+                                                  @%%%))~~~~\@            $$@@$    ~~~$@
+                                                  @%%%))))))@                   %@@~ ~~~~@
+                                                  @)))))))@//                       @@~~~~@
+                                                  @))))))@                           @$$%@\
+                                                   @%%@                             @\\@
+                                                    @@
+Level 1 complete. You are now on level 2. Challenges to complete level: 2.
+
+Level 1 100% [==========================================]
+Level 2   0% [..........................................]
+Level 3   0% [..........................................]
+Level 4   0% [..........................................]
+Level 5   0% [..........................................]
+
+to continue.
+foobar:~/ jeff.washcloth$  
+solution.py
+
+You have unsaved changes on this file.
+Are you sure you want to close? (y/N)
+
+    S Save E Close 
+
+    Google About Google Privacy & Terms 
+
+

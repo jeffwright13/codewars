@@ -15,58 +15,45 @@ def google_foo(x, y, z):
 
     If there is only one valid representation, the function should return it as a string, in the form MM/DD/YY. If there are multiple valid representations, the function should return the string "Ambiguous." Each of x, y, z will be between 1 to 99 inclusive. You may also assume that there are no leap years.
     """
-    # Sort the input numbers into type:
-    # year; year or day; month or year or day
-    # This code working.
-    types = []
-    for num in [x, y, z]:
-        if num <=0 or num >= 100:
-            return 'Invalid'
-        if 32 <= num <= 99:
-            types.append('year')
-        elif 13 <= num <= 31:
-            types.append('year_day')
-        else:
-            types.append('month_year_day')
-    print '(x,y,z): ', (x,y,z)
-    print 'types: ', types
-
+    import itertools
     
-    # If all nums are equal we can return result immediately
-    if x == y and x == z:
-        return '{:02}/{:02}/{:02}'.format(x, y, z)
+    # set up a dict of number of days in month; 
+    # generate all permutations (ordered combos) of inputs x, y, z;
+    # creae a set to hold unique combinations of valid inputs
+    num_days = {1: 31, 2: 28, 3: 31, 4: 30, 5: 31, 6: 30, 7: 31, 8: 31,
+                9: 30, 10: 31, 11: 30, 12: 31}
+    p = itertools.permutations([x, y, z])
+    valids = set()
 
+    for perm in p:
+        month = perm[0]
+        day   = perm[1]
+        year  = perm[2]
+        if month <= 12 and day <= num_days[month]:
+            valids.add(perm)
 
-    # Depending on input types, return result
-    # This code NOT working in general case.
-    if 'year' in types:
-        print 'In first main decision branch'
-        
-        if types[0] == 'year':           # x is the year
-            if y == z:
-                return '{:02}/{:02}/{:02}'.format(y, z, x)
-        elif types[1] == 'year':         # y is the year
-            if x == z:
-                return '{:02}/{:02}/{:02}'.format(x, z, y)
-        elif types[2] == 'year':         # z is the year
-            if x == y:
-                return '{:02}/{:02}/{:02}'.format(x, y, z)
-        else:
-            pass
+    if len(valids) == 1:
+        v = valids.pop()
+        return '%02d/%02d/%02d' % v
     else:
-        print 'In second main decision branch'
-    
-    return None
+        return 'Ambiguous'
+
 
 def test_google_foo():
-    assert google_foo(2, 130, 3)  == "Invalid"
     assert google_foo(1, 1, 1)    == "01/01/01"
     assert google_foo(11, 11, 11) == "11/11/11"
     assert google_foo(12, 94, 12) == "12/12/94"
     assert google_foo(94, 12, 12) == "12/12/94"
     assert google_foo(12, 12, 94) == "12/12/94"
+    assert google_foo(3, 19, 60)  == "03/19/60"
+    assert google_foo(19, 60, 3)  == "03/19/60"
     assert google_foo(60, 19, 3)  == "03/19/60"
     assert google_foo(19, 19, 3)  == "03/19/19"
+    assert google_foo(29, 2, 28)  == "02/28/29"
+    assert google_foo(19, 18, 3)  == "Ambiguous"
+    assert google_foo(19, 3, 3)   == "Ambiguous"
+    assert google_foo(1, 2, 3)    == "Ambiguous"
+    assert google_foo(1, 12, 13)  == "Ambiguous"
     assert google_foo(60, 11, 3)  == "Ambiguous"
     assert google_foo(2, 30, 3)   == "Ambiguous"
 
