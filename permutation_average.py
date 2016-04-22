@@ -1,5 +1,5 @@
 def main():
-    print permutation_average(None)
+    print permutation_average.__doc__
 
 def permutation_average(n):
     """
@@ -35,13 +35,16 @@ def permutation_average(n):
 
     Note: Your program should be able to handle numbers up to 6 digits long
     """
+    if len(str(n)) > 6:
+        return 'Input too long'
     return None
 
 def test_permutation_average():
-    assert permutation_average(2)   == 2
-    assert permutation_average(25)  == 1
-    assert permutation_average(20)  == 2
-    assert permutation_average(737) == 629
+    assert permutation_average(1234567) == 'Input too long'
+    assert permutation_average(2)       == 2
+    assert permutation_average(25)      == 1
+    assert permutation_average(20)      == 2
+    assert permutation_average(737)     == 629
 
 if __name__ == "__main__":
     main()
