@@ -1,5 +1,5 @@
 def main():
-    print function(None)
+    print function.__doc__
 
 def function(n):
     """
