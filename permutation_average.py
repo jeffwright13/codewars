@@ -37,14 +37,17 @@ def permutation_average(n):
     """
     if len(str(n)) > 6:
         return 'Input too long'
-    return None
+    
+    from itertools import permutations
+    perms = [float(''.join(e)) for e in permutations(str(n))]
+    return int(round(sum(perms) / len(perms)))
 
 def test_permutation_average():
     assert permutation_average(1234567) == 'Input too long'
-    assert permutation_average(2)       == 2
-    assert permutation_average(25)      == 1
-    assert permutation_average(20)      == 2
+    assert permutation_average(25)      == 39
     assert permutation_average(737)     == 629
+    assert permutation_average(2)       == 2
+    assert permutation_average(20)      == 11
 
 if __name__ == "__main__":
     main()
