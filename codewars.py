@@ -4,12 +4,13 @@ def main():
 def function(n):
     """
     """
-    return None
+    return n
 
 def test_function():
     assert function(0) == 0
     assert function(1) == 1
     assert function(2) == 2
+    assert function(3) == 2
 
 if __name__ == "__main__":
     main()
