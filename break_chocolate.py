@@ -9,15 +9,29 @@ def breakChocolate(n, m):
 
     If input data is invalid you should return 0 (as in no breaks are needed if we do not have any chocolate to split). Input will always be a non-negative integer.
     """
-    if (n < 1 or m < 1) or (n == 1 and m == 1):
+    # error checking and unique conditions
+    if n < 1 or m < 1:
         return 0
+    elif n == 1:
+        return m - 1
+    elif m == 1:
+        return n - 1
+
+    # here's where the meat of the calculation is
+    pass
+    
+    
 
 def test_breakChocolate():
-    assert breakChocolate(1, 1) == 0
-    assert breakChocolate(1, 0) == 0
-    assert breakChocolate(0, 1) == 0
-    assert breakChocolate(1, 2) == 1
-    assert breakChocolate(2, 1) == 1
+    assert breakChocolate(0, 1)  == 0
+    assert breakChocolate(-2, 2) == 0
+    assert breakChocolate(1, 1)  == 0
+    assert breakChocolate(1, 0)  == 0
+    assert breakChocolate(1, 2)  == 1
+    assert breakChocolate(2, 1)  == 1
+    assert breakChocolate(13, 1) == 12
+    assert breakChocolate(1, 66) == 65
+    assert breakChocolate(5, 5)  == 24
 
 if __name__ == "__main__":
     main()
