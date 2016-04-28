@@ -13,13 +13,13 @@ def calculate_improved(students):
 
     Input
 
-    The input you will receive will be an array of students, students will be an object containing a name and array of marks (in order of acheived) the marks will be out of 100, a student can however have a mark of null if the test was not attempted (treat this as 0)
+    The input you will receive will be an array of students; students will be an object containing a name and array of marks (in order of acheived); the marks will be out of 100, a student can however have a mark of null if the test was not attempted (treat this as 0)
     Example of student Object: {name:'Henry, Johns',marks:[25,50]}
 
     Output
 
-    The output expected will be an array of objects similar to the student object, containing the name and total improvement percentage out of the first and last mark given to calculate the overall improvement percentage. The output array must be sorted by most improved (Round the calculated improvement) If there is a tie in improvements then order by name.
-    Example of return Object: {name:'Henry, Johns',improvement:100}     
+    The output expected will be an array of objects similar to the student object, containing the name and total improvement percentage out of the first and last mark given to calculate the overall improvement percentage. The output array must be sorted by most improved (round the calculated improvement). If there is a tie in improvements, then order by name.
+    Example of return Object: {name:'Henry, Johns', improvement:100}
     """
     return None
 
