@@ -20,15 +20,21 @@ def breakChocolate(n, m):
     # here's where the meat of the calculation is
     pass
     
-    
 
 def test_breakChocolate():
-    assert breakChocolate(0, 1)  == 0
     assert breakChocolate(-2, 2) == 0
-    assert breakChocolate(1, 1)  == 0
+    assert breakChocolate(0, 1)  == 0
     assert breakChocolate(1, 0)  == 0
+    assert breakChocolate(1, 1)  == 0
     assert breakChocolate(1, 2)  == 1
     assert breakChocolate(2, 1)  == 1
+    assert breakChocolate(2, 2)  == 3
+    assert breakChocolate(2, 3)  == 5
+    assert breakChocolate(3, 2)  == 3
+    assert breakChocolate(3, 3)  == 8
+    assert breakChocolate(4, 2)  == 7
+    assert breakChocolate(4, 3)  == 11
+    assert breakChocolate(4, 4)  == 15
     assert breakChocolate(13, 1) == 12
     assert breakChocolate(1, 66) == 65
     assert breakChocolate(5, 5)  == 24
