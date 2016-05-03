@@ -15,14 +15,21 @@ def binary_to_string(binary):
 
     Note: In the case of an empty binary string your binary_to_string should return an empty string.
     """
-    if len(binary) == 0:
+    l = len(binary)
+    if l == 0 or l % 8 != 0:
         return ''
-    if len(binary) % 8 != 0:
-        return 'Error in input length'
+
+    num_chars = l/8
+    out_str = ''
+    for i in range(num_chars):
+        out_str += chr(int(binary[i*8:(i+1)*8], 2))
+
+    return out_str
 
 def test_binary_to_string():
     assert binary_to_string('') == ''
-    assert binary_to_string('011') == 'Error in input length'
+    assert binary_to_string('011') == ''
+    assert binary_to_string('00100001') == '!'
     assert binary_to_string('0100100001100101011011000110110001101111') == 'Hello'
     assert binary_to_string('00110001001100000011000100110001') == '1011'
 
