@@ -18,16 +18,27 @@ def polybius(text):
     Examples:
 
     polybius('A') # "11"
-    polybius('POLYBIUS SQUARE CIPHER') # "3534315412244543 434145114215 132435231542"
     polybius('IJ') # "2424"
     polybius('CODEWARS') # "1334141552114243"
     """
-    pass
+    cipher = {'A': '11', 'B': '12', 'C': '13', 'D': '14', 'E': '15', 'F': '21', 'G': '22', 'H': '23', 'I': '24', 'J': '24', 'K': '25', 'L': '31', 'M': '32', 'N': '33', 'O': '34', 'P': '35', 'Q': '41', 'R': '42', 'S': '43', 'T': '44', 'U': '45', 'V': '51', 'W': '52', 'X': '53', 'Y': '54', 'Z': '55'}
+
+    l = list(text.upper())
+    ciphertext = []
+
+    for letter in l:
+        if letter not in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ':
+            ciphertext.append(letter)
+        else:
+            ciphertext.append(cipher[letter])
+    
+    return ''.join(ciphertext)
 
 def test_polybius():
     assert polybius('A') == '11'
     assert polybius('IJ') == '2424'
-    assert polybius('POLYBIUS SQUARE CIPHER') == '3534315412244543 434145114215'
+    assert polybius('codewars') == '1334141552114243'
+    assert polybius('POLYBIUS SQUARE CIPHER') == '3534315412244543 434145114215 132435231542'
 
 if __name__ == "__main__":
     main()
