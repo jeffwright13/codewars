@@ -21,10 +21,21 @@ def tribonacci(signature, n):
     """
     if n <=0:
         return []
+    if 1 <= n <= 3:
+        return signature[0:n]
+    else:
+        pass 
+    
 
 def test_tribonacci():
     assert tribonacci([0,1,2], 0) == []
-    assert tribonacci([1, 1, 2], 10) == [1,1,1,3,5,9,17,31,57,105]
+    assert tribonacci([0,1,2], 1) == [0]
+    assert tribonacci([1,1,2], 2) == [1,1]
+    assert tribonacci([1,1,1], 3) == [1,1,1]
+    assert tribonacci([1,1,3], 4) == [1,1,3,5]
+    assert tribonacci([1,1,1], 8) == [1,1,1,3,5,9,17,31]
+    assert tribonacci([0,0,1], 9) == [0,0,1,1,2,4,7,13,24]
+    assert tribonacci([1,1,2], 10) == [1,1,1,3,5,9,17,31,57,105]
 
 if __name__ == "__main__":
     main()
