@@ -24,11 +24,17 @@ def winner(contestants):
 
     Potential errors derived from the specifications are: - More or less than three candidates take part in the game. - A candidate did not roll the wheel or rolled it more than twice. - Scores are not valid. - Invalid user entry (no name or no score).
     """
-    def check_valid(c):
-        pass
+    print "Contestants:", contestants, type(contestants)
+    def valid(*args):
+        print "args:", args, len(args), type(args)
+        if len(args) != 3:
+            return False
 
-    if not check_valid(contestants):
+    if not valid(contestants):
         return False
+
+    for contestant in contestants:
+        print "contestant:", contestant, type(contestant)
 
 def test_winner():
     c1 = {'name':"Bob", 'scores':[10, 65] }
