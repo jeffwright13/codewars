@@ -11,7 +11,7 @@ def winner(contestants):
 
     You receive the information about each candidate as an array of objects: each object should have a name and a scores array with the candidate roll values.
 
-    Your solution should return the name of the winner or false if there is no winner (all scored more than 100).
+    Your solution should return the name of the winner, or false if there is no winner (all scored more than 100).
 
     Example:
 
@@ -27,14 +27,21 @@ def winner(contestants):
     print "Contestants:", contestants, type(contestants)
     def valid(*args):
         print "args:", args, len(args), type(args)
+        # ensure exactly 3 candidates are playing
         if len(args) != 3:
             return False
+        # ensure each candidate rolled once or twice
+        
+        # ensure each candidate's scores are valid
+        
+        # ensure each candidate has valid name
 
     if not valid(contestants):
         return False
 
     for contestant in contestants:
         print "contestant:", contestant, type(contestant)
+        
 
 def test_winner():
     c1 = {'name':"Bob", 'scores':[10, 65] }
