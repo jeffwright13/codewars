@@ -24,26 +24,61 @@ def winner(contestants):
 
     Potential errors derived from the specifications are: - More or less than three candidates take part in the game. - A candidate did not roll the wheel or rolled it more than twice. - Scores are not valid. - Invalid user entry (no name or no score).
     """
-    print "Contestants:", contestants, type(contestants)
-    def valid(*args):
-        print "args:", args, len(args), type(args)
-        # ensure exactly 3 candidates are playing
+    #print "Contestants:", contestants, type(contestants), len(contestants)
+    """
+    def is_valid(*args):
+        #for arg in args:
+        #    print "arg:", arg
+        #print "args:", args, len(args), type(args)
+        # ensure exactly 3 contestants are playing
         if len(args) != 3:
+            print 'Need exactly 3 contestants'
             return False
-        # ensure each candidate rolled once or twice
-        
-        # ensure each candidate's scores are valid
-        
-        # ensure each candidate has valid name
-
-    if not valid(contestants):
+        # ensure each contestant rolled either once or twice
+        for contestant in contestants:
+            if len(contestant['scores']) != 2:
+                print 'Contestant', contestant['name'], 'needs 1 or 2 scores'
+                return False
+        # ensure each contestant's scores are valid
+        for contestant in contestants:
+            for score in contestant['scores']:
+                if score not in range(5,101,5):
+                    print 'Contestant', contestant['name'], 'has invalid scores'
+                    return False
+        # ensure each contestant has valid name
+        for contestant in contestants:
+            if len(contestant['name']) <= 0:
+                print 'Contestant', contestant, 'needs a valid name'
+                return False
+        # Passes test - return True
+        return True
+   
+    if not is_valid(contestants):
         return False
-
+    """
+    # Check validity of contestants
+    if len(contestants) != 3:
+        print 'Need exactly 3 contestants; was provided ', len(contestants)
+        return False
     for contestant in contestants:
-        print "contestant:", contestant, type(contestant)
-        
+        #print "contestant:", contestant, type(contestant)
+        if len(contestant['scores']) not in (1, 2):
+            print 'Contestant "', contestant['name'], '" needs 1 or 2 scores'
+            return False
+        if len(contestant['name']) <= 0:
+            print 'Contestant', contestant, 'needs a valid name'
+            return False
+        for score in contestant['scores']:
+            if score not in range(5,101,5):
+                print 'Contestant', contestant['name'], 'has invalid scores'
+                return False
+
+    # Contestant list provided seems OK; now process
+
+
 
 def test_winner():
+    c0 = {'name': '', 'scores': []}
     c1 = {'name':"Bob", 'scores':[10, 65] }
     c2 = {'name':"Bill", 'scores':[90, 5] }
     c3 = {'name':"Jennifer", 'scores':[55] }
@@ -64,6 +99,7 @@ def test_winner():
     c18 = {'name':"Gandalf", 'scores':[85] }
 
     assert winner([]) == False
+    assert winner([c0, c0, c0]) == False
     assert winner([c1]) == False
     assert winner([c1, c2, c3, c4]) == False
     assert winner([c1, c2, c3]) == 'Bill'
