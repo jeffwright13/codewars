@@ -23,18 +23,43 @@ def convertFracts(n):
     ========
      [ [1, 2], [1, 3], [1, 4] ] produces the array [ [6,12], [4,12], [3,12] ]
     """
-    def gcd(nums):
-        pass
+    def is_prime(n):
+        """
+        Checks for primality via trial division on (1, sqrt(n)]
+        """
+        from math import sqrt
+
+        if type(n) != int or n <= 1:
+            return False
+
+        for i in range(2, int(round(sqrt(n)))+1):
+            if n % i == 0:
+                return False
+        return True
+
+    def gen_primes(m):
+        """
+        Generate a list of primes on range [2, m], inclusive,
+        by eliminating evens and then checking if prime
+        """
+        primes = [2]
+        for i in range(3, m+1, 2):
+            if is_prime(i):
+                primes.append(i)
+        return primes    
 
     def lcm(*nums):
-        multiples = []
+        primes = {}
         for num in nums:
-            for i in range(1, 
+            primes[num] = gen_primes(num[1])
+        print primes
 
-    return n
+    print lcm(n)
+    return None
 
 def test_convertFracts():
     assert convertFracts([[1, 2], [1, 3], [1, 4]]) == [[6, 12], [4, 12], [3, 12]]
+    assert convertFracts([[2, 2], [2, 3], [3, 5]]) == [[30, 30], [20, 30], [18, 30]]
 
 if __name__ == "__main__":
     main()
