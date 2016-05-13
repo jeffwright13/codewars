@@ -1,7 +1,7 @@
 def main():
     print sumDig_nthTerm.__doc__
 
-def sumDig_nthTerm(n):
+def sumDig_nthTerm(initVal, patternL, nthTerm):
     """
     We have the first value of a certain sequence, we will name it initVal. We define pattern list, patternL, an array that has the differences between contiguous terms of the sequence. E.g: patternL = [k1, k2, k3, k4]
 
@@ -43,16 +43,23 @@ def sumDig_nthTerm(n):
 
     Let's see some cases for this function:
 
-    sumDig_nthTerm(10, [2, 1, 3], 6) -----> 10 # because the sixth term is 19 sum of Dig = 1 + 9 = 10. The sequence up to the sixth-Term is: 10, 12, 13, 16, 18, 19
-
+    sumDig_nthTerm(10, [2, 1, 3], 6) -----> 10 # because the sixth term is 19 and the sum of Dig = 1 + 9 = 10. The sequence up to the sixth-Term is: 10, 12, 13, 16, 18, 19
     sumDig_nthTerm(10, [1, 2, 3], 15) ----> 10 # 37 is the 15-th term, and 3 + 7 = 10
 
     Enjoy it and happy coding!!
-
     """
-    return None
+    index = 0
+    s = initVal
+    for i in range(1, nthTerm):
+        if index % len(patternL) == 0:
+            index = 0
+        s += patternL[index]
+        index += 1
+    print "sum:", s, type(s)
+    return sum([int(digit) for digit in str(s)])
 
 def test_sumDig_nthTerm():
+    assert sumDig_nthTerm(1, [1, 3, 5], 4) == 1
     assert sumDig_nthTerm(10, [2, 1, 3], 6) == 10
     assert sumDig_nthTerm(10, [2, 1, 3], 15) == 10
     assert sumDig_nthTerm(100, [2, 2, 5, 8], 6) == 11
