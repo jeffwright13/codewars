@@ -14,7 +14,7 @@ def is_prime(n):
 
 def gen_primes(m):
     """
-    Generate a list of primes on range [2, n], inclusive,
+    Generate a list of primes on range [2, m], inclusive,
     by eliminating evens and then checking if prime
     """
     primes = [2]
