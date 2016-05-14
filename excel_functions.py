@@ -1,5 +1,7 @@
 def main():
     """
+    http://www.codewars.com/kata/56055244356dc5c45c00001e/train/python
+
     The Brief
     =========
     Microsoft Excel provides a number of useful functions for counting, summing, and averaging values if they meet a certain criteria. Your task is to write three functions that work similarly to Excel's COUNTIF, SUMIF and AVERAGEIF functions.
@@ -30,29 +32,24 @@ def main():
     """
     pass
 
-def count_if(n):
+def count_if(values, criteria):
     return n
 
 def test_countif():
-    assert count_if(0) == 0
-    assert count_if(1) == 1
-    assert count_if(2) == 2
+    assert count_if(1,3,5,7,9], 3) == 1
+    assert count_if(["John","Steve","John"], "John") == 2
 
-def sum_if(n):
+def sum_if(values, criteria):
     return n
 
 def test_sumif():
-    assert sum_if(0) == 0
-    assert sum_if(1) == 1
-    assert sum_if(2) == 2
+    assert sum_if([2,4,6,-1,3,1.5],">0") == 16.5
 
-def average_if(n):
+def average_if(values, criteria):
     return n
 
 def test_averageif():
-    assert average_if(0) == 0
-    assert average_if(1) == 1
-    assert average_if(2) == 2
+    assert average_if([99,95.5,0,83],"<>0") == 92.5
 
 if __name__ == "__main__":
     main()
