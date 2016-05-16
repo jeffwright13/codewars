@@ -5,7 +5,7 @@ def separate_liquids(n):
     """
     Don't Drink the Water
 
-    Given a two-dimensional array representation of a glass of mixed liquids, sort the array such that the liquids appear in the glass based on their density. (Lower density floats to the top) The width of the glass will not change from top to bottom.
+    Given a two-dimensional array representation of a glass of mixed liquids, sort the array such that the liquids appear in the glass based on their density. Lower density floats to the top. The width of the glass will not change from top to bottom.
 
     ======================
     |   Density Chart    |
@@ -27,7 +27,11 @@ def separate_liquids(n):
     return None
 
 def test_separate_liquids():
-    assert separate_liquids([['H', 'H', 'W', 'O'],['W','W','O','W'],['H','H','O','O']]), [['O', 'O', 'O', 'O'],['W','W','W','W'],['H','H','H','H']],) == ''
+    assert separate_liquids([]) == []
+    assert separate_liquids([['H','H','W','O'],['W','W','O','W'],['H','H','O','O']]) == [['O','O','O','O'],['W','W','W','W'],['H','H','H','H']]
+    assert separate_liquids([['A','A','O','H'],['A', 'H', 'W', 'O'],['W','W','A','W'],['H','H','O','O']]) == [['O','O','O','O'],['A', 'A', 'A', 'A'],['W','W','W','W'],['H','H','H','H']]
+    assert separate_liquids([['A','H','W','O']]) == [['O','A','W','H']]
+    assert separate_liquids([['A'],['H'],['W'],['O']]) == [['O'],['A'],['W'],['H']]
 
 if __name__ == "__main__":
     main()
