@@ -38,8 +38,33 @@ def lose_weight(gender, weight, duration):
 
     return round(weight, 1)
 
+
+def test_lose_weight():
+    assert lose_weight('K', 200, 10) == 'Invalid gender'
+    assert lose_weight('M', 0, 10) == 'Invalid weight'
+    assert lose_weight('M', -5, 10) == 'Invalid weight'
+    assert lose_weight('F', 160, 0) == 'Invalid duration'
+    assert lose_weight('F', 160, -10) == 'Invalid duration'
+    assert lose_weight('M', 250, 5) == 231.8
+    assert lose_weight('F', 190, 8) == 172.5
+    assert lose_weight('M', 405, 12) == 337.8
+    assert lose_weight('F', 130, 7) == 119.5
+
 """
 CodeWars Kata Tests (Python):
+
+def assert_fuzzy_equals(actual, expected, msg=""):
+    import math
+    merr = 1e-3  # max error
+
+    if expected == 0:
+        inrange = math.fabs(actual) <= merr
+    else:
+        inrange = math.fabs((actual - expected) / expected) <= merr
+    if msg == "":
+        msg = "Expected value near {:.12f}, but got {:.12f}"
+        msg = msg.format(expected, actual)
+    return Test.expect(inrange, msg)
 
 test.describe("Basic Tests - Negative")
 test.it("Should reject invalid genders")
@@ -51,7 +76,7 @@ test.assert_equals(lose_weight('M', -5, 10), 'Invalid weight')
 test.it("Should reject negative or zero durations")
 test.assert_equals(lose_weight('F', 160, 0), 'Invalid duration')
 test.assert_equals(lose_weight('F', 160, -10), 'Invalid duration')
-
+###
 test.describe("Basic Tests - Positive")
 test.it("Typical male")
 test.assert_equals(lose_weight('M', 250, 5), 231.8)
@@ -61,14 +86,45 @@ test.it("Very heavy male")
 test.assert_equals(lose_weight('M', 405, 12), 337.8)
 test.it("Light female")
 test.assert_equals(lose_weight('F', 130, 7), 119.5)
+###
+test.describe("Random Tests")
+import random
+
+test.it('Should reject invalid genders')
+import string
+l = string.letters
+l = l.replace('F', '')
+l = l.replace('M', '')
+for i in range(0, 25):
+    test.assert_equals(lose_weight(random.choice(l), 100, 1), 'Invalid gender')
+
+test.it('Should reject weights less than or equal to zero')
+for i in range(0, 25):
+    test.assert_equals(lose_weight(random.choice(['M', 'F']), random.randint(-65535, 0), 1), 'Invalid weight')
+
+test.it('Should reject negative or zero durations')
+for i in range(0, 25):
+    test.assert_equals(lose_weight(random.choice(['M', 'F']), 200, random.randint(-65535, 0)), 'Invalid duration')
+
+test.it('Should calculate values correctly for men')
+g = 'M'
+m = 0.015
+w = random.randint(1, 65535)
+d = random.randint(1, 65535)
+wt = w
+for i in range(int(d)):
+    wt -= (wt * m)
+for i in range(0, 25):
+    test.assert_equals(round(lose_weight(g, w, d), 1), round(wt, 1))
+
+test.it('Should calculate values correctly for women')
+g = 'F'
+m = 0.012
+w = random.randint(1, 65535)
+d = random.randint(1, 65535)
+wt = w
+for i in range(int(d)):
+    wt -= (wt * m)
+for i in range(0, 25):
+    test.assert_equals(round(lose_weight(g, w, d), 1), round(wt, 1))
 """
-def test_lose_weight():
-    assert lose_weight('K', 200, 10) == 'Invalid gender'
-    assert lose_weight('M', 0, 10) == 'Invalid weight'
-    assert lose_weight('M', -5, 10) == 'Invalid weight'
-    assert lose_weight('F', 160, 0) == 'Invalid duration'
-    assert lose_weight('F', 160, -10) == 'Invalid duration'
-    assert lose_weight('M', 250, 5) == 231.8
-    assert lose_weight('F', 190, 8) == 172.5
-    assert lose_weight('M', 405, 12) == 337.8
-    assert lose_weight('F', 130, 7) == 119.5
