@@ -2,28 +2,25 @@ def main():
     print alphabet_position.__doc__
 
 def alphabet_position(text):
-'''
+    '''
+    http://www.codewars.com/kata/replace-with-alphabet-position
 
     Welcome. In this kata you are required to, given a string, replace every letter with its position in the alphabet. If anything in the text isn't a letter, ignore it and don't return it. a being 1, b being 2, etc. As an example:
 
     alphabet_position("The sunset sets at twelve o' clock.")
     Should return "20 8 5 19 21 14 19 5 20 19 5 20 19 1 20 20 23 5 12 22 5 15 3 12 15 3 11" (As a string.)
-'''
+    '''
     import string
     out = []
-    l = list(text)
-    for char in l:
+    for char in list(text):
         if char in string.ascii_uppercase:
             out.append(string.find(string.ascii_uppercase, char)
-        elif char in string.ascii_lowercase:
-            out.append(string.find(string.ascii_lowercase, char)
-        else:
-            continue
+
     print out
     return ' '.join(out)
 
 def test_alphabet_position():
-    assert alphabet_position("The sunset sets at twelve o' clock.") == "20 8 5 19 21 14 19 5 20 19 5 20 19 1 20 20 23 5 12 22 5 15 3 12 15 3 11"
+    assert alphabet_position("The sunset sets at twelve o' clock.") == '20 8 5 19 21 14 19 5 20 19 5 20 19 1 20 20 23 5 12 22 5 15 3 12 15 3 11'
 
 if __name__ == "__main__":
     main()

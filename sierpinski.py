@@ -3,6 +3,10 @@ def main():
 
 def sierpinski(n):
     """
+    Sierpinski's Gasket
+
+    http://www.codewars.com/kata/sierpinskis-gasket
+
     Write a function that takes an integer n and returns the nth iteration of the fractal known as Sierpinski's Gasket (http://en.wikipedia.org/wiki/Sierpinski_triangle).
 
     Here are the first few iterations. The fractal is composed entirely of L and white-space characters; each character has one space between it and the next (or a newline).
