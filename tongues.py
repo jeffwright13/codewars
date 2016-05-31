@@ -20,17 +20,25 @@ def tongues(code):
     Your job is to write a function that decodes Gandalf's writings.
     """
     import string
-    vowels = 'aeiou' * 2
-    consonants = 'bkxznhdcwgpvjqtsrlmf' * 2
+    vowels_lower = 'aiyeou' * 2
+    vowels_upper = vowels_lower.upper()
+    consonants_lower = 'bkxznhdcwgpvjqtsrlmf' * 2
+    consonants_upper = consonants_lower.upper()
     out = []
 
     for char in list(code):
-        if char in vowels:
-            index = string.find(vowels, char)
-            out.append(vowels[index + 3])
-        elif char in consonants:
-            index = string.find(consonants, char)
-            out.append(consonants[index + 10])
+        if char in vowels_lower:
+            index = string.find(vowels_lower, char)
+            out.append(vowels_lower[index + 3])
+        elif char in vowels_upper:
+            index = string.find(vowels_upper, char)
+            out.append(vowels_upper[index + 3])
+        elif char in consonants_lower:
+            index = string.find(consonants_lower, char)
+            out.append(consonants_lower[index + 10])
+        elif char in consonants_upper:
+            index = string.find(consonants_upper, char)
+            out.append(consonants_upper[index + 10])
         else:
             out.append(char)
 
