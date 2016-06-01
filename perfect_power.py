@@ -14,11 +14,11 @@ def perfect_power(n):
     perfect_power(9) => [3,2]
     perfect_power(5) => None
     """
-    print "n:", n
+    print "======\nn:", n
     
-    for m in range(2, int(n**(1./2))+1):
+    for m in range(2, int(n**(1./2))+2):
         print "m:", m
-        for k in range(2, int(n**(1./m))+1):
+        for k in range(2, int(n**(1./2))+2):
             print "k:", k
             if m**k == n:
                 return [m, k]
@@ -29,6 +29,7 @@ def perfect_power(n):
 def test_perfect_power():
     assert perfect_power(3)  == None
     assert perfect_power(4)  == [2, 2]
+    assert perfect_power(8)  == [2, 3]
     assert perfect_power(9)  == [3, 2]
     assert perfect_power(5)  == None
     assert perfect_power(25) == [5, 2]
