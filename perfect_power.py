@@ -15,11 +15,11 @@ def perfect_power(n):
     perfect_power(5) => None
     """
     print "======\nn:", n
-    
+
     for m in range(2, int(n**(1./2))+2):
-        print "m:", m
+        #print "m:", m
         for k in range(2, int(n**(1./2))+2):
-            print "k:", k
+            #print "k:", k
             if m**k == n:
                 return [m, k]
             if m**k > n:
@@ -27,14 +27,16 @@ def perfect_power(n):
     return None
 
 def test_perfect_power():
-    assert perfect_power(3)  == None
-    assert perfect_power(4)  == [2, 2]
-    assert perfect_power(8)  == [2, 3]
-    assert perfect_power(9)  == [3, 2]
-    assert perfect_power(5)  == None
-    assert perfect_power(25) == [5, 2]
-    assert perfect_power(80) == None
-    assert perfect_power(81) == [3, 4]
+    assert perfect_power(3)     == None
+    assert perfect_power(4)     == [2, 2]
+    assert perfect_power(8)     == [2, 3]
+    assert perfect_power(9)     == [3, 2]
+    assert perfect_power(5)     == None
+    assert perfect_power(25)    == [5, 2]
+    assert perfect_power(80)    == None
+    assert perfect_power(81)    == [3, 4]
+    assert perfect_power(53824) == [232, 2]
+    assert perfect_power(996250626251) == [251, 5]
 
 if __name__ == "__main__":
     main()
