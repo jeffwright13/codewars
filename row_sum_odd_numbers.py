@@ -17,7 +17,12 @@ def row_sum_odd_numbers(n):
     row_sum_odd_numbers(1); # 1
     row_sum_odd_numbers(2); # 3 + 5 = 8
     """
-    return n
+    if n <= 0:
+        return 0
+    sum = 0
+    for i in range(n*(n-1)+1, (n+1)*n, 2):
+        sum += i
+    return sum
 
 def test_row_sum_odd_numbers():
     assert row_sum_odd_numbers(0) == 0
