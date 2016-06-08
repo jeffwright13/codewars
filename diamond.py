@@ -20,7 +20,7 @@ def diamond(n):
 
 def test_diamond():
     assert diamond(0) == None
-    assert diamond(1) == " *\n"
+    assert diamond(1) == "*\n"
     assert diamond(2) == None
     assert diamond(3) == " *\n***\n *\n"
     assert diamond(4) == None

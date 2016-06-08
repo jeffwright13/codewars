@@ -1,7 +1,7 @@
 def main():
     print processes.__doc__
 
-def processes(n):
+def processes(start, end, processes):
     """
     In this task you have to code process planner.
 
@@ -9,7 +9,8 @@ def processes(n):
 
     If start already equals end, return [], since no path is required.
 
-    Example: 
+    Example:
+    ========
     test_processes = [
         ['gather', 'field', 'wheat'],
         ['bake', 'flour', 'bread'],
@@ -20,16 +21,39 @@ def processes(n):
     processes('field', 'ferrari', test_processes) # should return []
     processes('field', 'field', test_processes) # should return [], since no processes are needed
     """
-    pass
+    # print "start, end, processes:", start, end, processes
+    end_things = [processes[x][2] for x in range(len(processes))]
+    if start == end or start not in end_things:
+        return []
 
+    seq = []
+    want = need = do = ''
+    for i in range(len(processes)):
+        if processes[i][2] == start:
+            want = processes[i][2]
+            need = processes[i][1]
+            do   = processes[i][0]
+            seq.append(do)
+            break
+
+    for i in range(len(processes)):
+        if processes[i][2] == need:
+            want = processes[i][2]
+            need = processes[i][1]
+            do   = processes[i][0]
+            seq.append(do)
+
+    return seq.reverse()
 
 def test_processes():
-    assert processes(0) == None
-    assert processes(1) == "*\n"
-    assert processes(2) == None
-    assert processes(3) == " *\n***\n *\n"
-    assert processes(4) == None
-    assert processes(5) == "   *\n  ***\n*****\n  ***\n   *\n"
+    test_processes = [
+        ['gather', 'field', 'wheat'],
+        ['bake', 'flour', 'bread'],
+        ['mill', 'wheat', 'flour']]
+
+    assert processes('field', 'field', test_processes) == []
+    assert processes('field', 'ferrari', test_processes) == []
+    assert processes('field', 'bread', test_processes) == ['gather', 'mill', 'bake']
 
 if __name__ == "__main__":
     main()
