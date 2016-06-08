@@ -1,5 +1,9 @@
 def main():
-    print processes.__doc__
+    test_processes = [
+        ['gather', 'field', 'wheat'],
+        ['bake', 'flour', 'bread'],
+        ['mill', 'wheat', 'flour']]
+    processes('field', 'bread', test_processes)
 
 def processes(start, end, processes):
     """
@@ -21,29 +25,36 @@ def processes(start, end, processes):
     processes('field', 'ferrari', test_processes) # should return []
     processes('field', 'field', test_processes) # should return [], since no processes are needed
     """
-    # print "start, end, processes:", start, end, processes
     end_things = [processes[x][2] for x in range(len(processes))]
-    if start == end or start not in end_things:
+    if start == end or end not in end_things:
         return []
 
     seq = []
-    want = need = do = ''
+    seen = 0
+    inp = ''
+    out = ''
+    do  = ''
+    
     for i in range(len(processes)):
-        if processes[i][2] == start:
-            want = processes[i][2]
-            need = processes[i][1]
-            do   = processes[i][0]
+        if processes[i][2] == end:
+            out = processes[i][2]
+            inp = processes[i][1]
+            do  = processes[i][0]
             seq.append(do)
+            seen += 1
             break
 
-    for i in range(len(processes)):
-        if processes[i][2] == need:
-            want = processes[i][2]
-            need = processes[i][1]
-            do   = processes[i][0]
-            seq.append(do)
+    while seen < len(processes):
+        for i in range(len(processes)):
+            if processes[i][2] == inp:
+                out  = processes[i][2]
+                inp  = processes[i][1]
+                do   = processes[i][0]
+                seq.append(do)
+                seen += 1
 
-    return seq.reverse()
+    seq.reverse()
+    return seq
 
 def test_processes():
     test_processes = [
