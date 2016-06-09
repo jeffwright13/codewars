@@ -1,10 +1,10 @@
 def main():
     print transpose.__doc__
 
-def transpose(n):
+def transpose(song, interval):
     """
     Transposing a song
-
+    (http://www.codewars.com/kata/transposing-a-song)
 
     You are a composer who just wrote an awesome piece of music. Now it's time to present it to a band that will perform your piece, but there's a problem! The singers vocal range doesn't stretch as your piece requires, and you have to transpose the whole piece.
     Your task:
@@ -37,13 +37,24 @@ def transpose(n):
     ['Db'] -> -4 steps -> ['A#']
     ['E', 'F'] -> 1 step -> ['F', 'F#']
         """
-    return n
+    notes_sharp = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#']
+    
+    transposed_song = []
+    for note in song:
+        if 'b' in note:
+            note = note[0]
+            idx = notes_sharp.index(note) - 1
+        else:
+            idx = notes_sharp.index(note)
+        transposed_song.append(notes_sharp[(interval+idx)%12])
+    return transposed_song
 
 def test_transpose():
-    assert transpose(0) == 0
-    assert transpose(1) == 1
-    assert transpose(2) == 2
-    assert transpose(3) == 3
+    assert transpose(['G'], 5)  == ['C']
+    assert transpose(['G'], -5)  == ['D']
+    assert transpose(['Db'], -4) == ['A']
+    assert transpose(['E', 'F'], 1) == ['F', 'F#']
+    assert transpose(['Bb', 'C#', 'E'], -4) == ['F#', 'A', 'C']
 
 if __name__ == "__main__":
     main()
