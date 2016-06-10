@@ -34,6 +34,11 @@ def get_a_down_arrow_of(n):
     if n <= 0:
         return ''
 
+    if n == 1:
+        return '1'
+
+    return get_a_down_arrow_of(n-1) + '\n'
+
 def test_get_a_down_arrow_of():
     assert get_a_down_arrow_of(0) == ''
     assert get_a_down_arrow_of(-1) == ''
@@ -41,6 +46,7 @@ def test_get_a_down_arrow_of():
     assert get_a_down_arrow_of(2) == '121\n 1'
     assert get_a_down_arrow_of(3) == '112321\n 121\n  1'
     assert get_a_down_arrow_of(5) == '123454321\n 1234321\n  12321\n   121\n    1'
+    assert get_a_down_arrow_of(11) == '123456789010987654321\n 1234567890987654321\n  12345678987654321123454321\n   123456787654321\n    1234567654321\n     12345654321\n      123454321\n       1234321\n        12321\n         121\n          1'
 
 if __name__ == "__main__":
     main()
