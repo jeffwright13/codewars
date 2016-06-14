@@ -22,26 +22,36 @@ def lucasnum(n):
     Examples:
 
     lucasnum(-10) -> 123
-
     lucasnum(-5) -> -11
-
     lucasnum(-1) -> -1
-
     lucasnum(0) -> 2
-
     lucasnum(1) -> 1
-
     lucasnum(5) -> 11
-
     lucasnum(10) -> 123
     """
-    return n
+    if n == 0:
+        return 2
+    elif n == 1:
+        return 1
+    elif n == -1:
+        return -1
+    
+    if n >= 2:
+        return lucasnum(n-1) + lucasnum(n-2)
+    if n <= -2:
+        return -1 * lucasnum(-1*n)
+    
 
 def test_lucasnum():
-    assert lucasnum(0) == 0
-    assert lucasnum(1) == 1
-    assert lucasnum(2) == 2
-    assert lucasnum(3) == 3
+    assert lucasnum(0)   == 2
+    assert lucasnum(1)   == 1
+    assert lucasnum(-1)  == -1
+    assert lucasnum(2)   == 3
+    assert lucasnum(-2)  == -3
+    assert lucasnum(5)   == 11
+    assert lucasnum(10)  == 123
+    assert lucasnum(-5)  == -11
+    assert lucasnum(-10) == -123
 
 if __name__ == "__main__":
     main()
