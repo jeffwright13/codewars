@@ -1,7 +1,7 @@
 def main():
     print multiple_split.__doc__
 
-def multiple_split(n):
+def multiple_split(str, delimiters=[]):
     """
     Give me a multiple_split
     =================
@@ -17,7 +17,10 @@ def multiple_split(n):
     List of delimiters is optional and can be empty, so take that into account. Result cannot contain empty string.
     """
     import string
-    return None
+    s = str
+    for delim in delimiters:
+        s = ' '.join(string.split(s, delim))
+    return string.split(s) if s != '' else None
 
 def test_multiple_split():
     assert multiple_split('Hi everybody!', [' ','!']) == ['Hi', 'everybody']
