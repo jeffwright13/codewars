@@ -41,6 +41,17 @@ def ipv4_parser(ip_addr, mask):
     So in the first octet, '192' is part of the network address. The host identifier is simply '0'.
 
     """
+    print "ip_addr, mask:", ip_addr, mask
+    ip_octets_dec = [int(octet) for octet in ip_addr.split('.')]
+    print "ip_octets_dec:", ip_octets_dec
+    ip_octets_bin = [bin(octet)[2:].zfill(8) for octet in ip_octets_dec]
+    print "ip_octets_bin:", ip_octets_bin
+
+    mask_octets_dec = [int(octet) for octet in mask.split('.')]
+    print "mask_octets_dec:", mask_octets_dec
+    mask_octets_bin = [bin(octet)[2:].zfill(8) for octet in mask_octets_dec]
+    print "mask_octets_bin:", mask_octets_bin
+
     return None
 
 def test_ipv4_parser():
