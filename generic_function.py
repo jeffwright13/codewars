@@ -3,6 +3,7 @@ def main():
 
 def function(n):
     """
+
     """
     return n
 
