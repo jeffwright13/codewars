@@ -28,8 +28,11 @@ def find(needle, haystack):
 
     If no match the method should return -1
     """
-    return None
-
+    for i in range(len(haystack) - len(needle) + 1):
+        if all(a in b + '_' for a, b in zip(needle, haystack[i:])):
+            return i
+    return -1
+    
 def test_find_1():
     haystack = 'Once upon a midnight dreary, while I pondered, weak and weary'
     assert find('Once', haystack) == 0
@@ -41,6 +44,8 @@ def test_find_1():
 def test_find_2():
     assert find('strike', 'i will strike down upon thee') == 7
     assert find('g__d', 'That\'s the good thing about being president') == 11
+    assert find('g__d', 'That\'s the gaad thing about being president') == 11
+    assert find('g__d', 'That\'s the god thing about being president') == -1
 
 if __name__ == "__main__":
     main()
