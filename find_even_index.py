@@ -24,12 +24,17 @@ def find_even_index(arr):
 
     The index N such as the side to the left of N is equal to the side to the right of N. If you do not find an index that fits these rules, then you will return -1.
     """
-    return None
+    #print arr
+    sum_left = sum_right = 0
+    for i in range(0, len(arr)):
+        if sum(arr[0:i]) == sum(arr[i+1:]):
+            return i
+    return -1
 
 def test_find_even_index():
     assert find_even_index([1,2,3,4,3,2,1]) == 3
     assert find_even_index([1,100,50,-51,1,1]) == 1
-    assert find_even_index(1,2,3,4,5,6) == -1
+    assert find_even_index([1,2,3,4,5,6]) == -1
     assert find_even_index([0,0,0,0,0]) == 0
 
 if __name__ == "__main__":
