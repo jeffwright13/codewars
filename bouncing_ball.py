@@ -34,7 +34,8 @@ def bouncing_ball(h, bounce, window):
         h = 3, bounce = 1, window = 1.5, result is -1
 
     """
-    return None
+    if (h <= 0) or not (0 < bounce < 1) or (h < window):
+        return -1
 
 def test_bouncing_ball():
     assert bouncing_ball(3, 1, 1.5) == -1
