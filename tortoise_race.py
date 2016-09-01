@@ -18,7 +18,27 @@ def tortoise_race(v1, v2, g):
     race(720, 850, 70) => [0, 32, 18]
     race(80, 91, 37) => [3, 21, 49]
     """
-    pass
+    import math
+    
+    if (v2 <= 0) or (v1 <= 0) or (g <= 0):
+        return "Invalid input"
+    if v2 < v1:
+        return None
+
+    lead = g
+    delta_v = v2 - v1
+    
+    t = (1.0*lead)/(1.0*delta_v)
+    
+    #print "lead, delta_v, t:", lead, delta_v, t
+    
+    h = math.floor(t)
+    m = math.floor(t*60) % 60
+    s = math.floor(t*3600) % 60
+    
+    #print "h,m,s:", h,m,s
+    
+    return [h, m, s]
 
 def test_tortoise_race():
     assert tortoise_race(720, 850, 70) == [0, 32, 18]
