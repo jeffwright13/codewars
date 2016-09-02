@@ -41,12 +41,18 @@ def sel_number(n, d):
 
     (because the instructions says the value of may be included if it fulfills the above constraints of course)
     """
-    pass
+    f = lambda x: all(0 < int(y) - int(x) <= d for x, y in zip(str(x), str(x)[1:]))
+    return sum(1 for x in range(12, n + 1) if f(x))
 
 def test_sel_number():
-    assert sel_number(0, 1)  == 0
-    assert sel_number(3, 1)  == 0
-    assert sel_number(13, 1) == 1
+    assert sel_number(60, 0)    == 0
+    assert sel_number(55, 9)    == 0
+    assert sel_number(0, 1)     == 0
+    assert sel_number(3, 1)     == 0
+    assert sel_number(31, 1)    == 0
+    assert sel_number(4997, 1)  == 0
+    assert sel_number(13, 1)    == 1
+
     assert sel_number(15, 1) == 1    
     assert sel_number(20, 2) == 2
     assert sel_number(47, 3) == 12
