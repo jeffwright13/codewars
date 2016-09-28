@@ -32,9 +32,15 @@ def function(p0, percent, aug, p):
 
     Note: Don't forget to convert the percent parameter as a percentage in the body of your function: if the parameter percent is 2 you have to convert it to 0.02.
     """
-    pass
+    current_pop = p0
+    n = 0
+    while current_pop < p:
+        current_pop = int(current_pop + current_pop*(percent/100.0) + aug)
+        n += 1
+    return n
 
 def test_function():
+    assert function(1000, 2, 50, 1200) == 3
     assert function(1500, 5, 100, 5000) == 15
     assert function(1500000, 2.5, 10000, 2000000) == 10
     assert function(1500000, 0.25, 1000, 2000000) == 94
