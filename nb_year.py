@@ -1,7 +1,7 @@
 def main():
     print function.__doc__
 
-def function(n):
+def function(p0, percent, aug, p):
     """
     https://www.codewars.com/kata/growth-of-a-population/
 
@@ -32,13 +32,12 @@ def function(n):
 
     Note: Don't forget to convert the percent parameter as a percentage in the body of your function: if the parameter percent is 2 you have to convert it to 0.02.
     """
-    return n
+    pass
 
 def test_function():
-    assert function(0) == 0
-    assert function(1) == 1
-    assert function(2) == 2
-    assert function(3) == 3
+    assert function(1500, 5, 100, 5000) == 15
+    assert function(1500000, 2.5, 10000, 2000000) == 10
+    assert function(1500000, 0.25, 1000, 2000000) == 94
 
 if __name__ == "__main__":
     main()
