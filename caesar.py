@@ -1,7 +1,7 @@
 def main():
     print caesar.__doc__
 
-def caesar(n):
+def caesar(s, shift):
     """
     https://www.codewars.com/kata/caesar-cipher
 
@@ -17,13 +17,27 @@ def caesar(n):
     - caesar("ZZ Top", 3) should return "CC Wrs"
     """
     import string
+    uppers = string.ascii_uppercase * 2
+    lowers = string.ascii_lowercase * 2
     cipher = []
+    
+    for char in s:
+        if char in uppers:
+            idx = uppers.find(char)
+            cipher.append(uppers[idx+(shift%26)])
+        elif char in lowers:
+            idx = lowers.find(char)
+            cipher.append(lowers[idx+(shift%26)])
+        else:
+            cipher.append(char)
+
     return ''.join(cipher)
 
 def test_caesar():
-    assert caesar('Abcd') == 'Cdef'
-    assert caesar('message') == 'ldrrzfd'
-    assert caesar('ZZ Top') == 'CC Wrs'
+    assert caesar('message', -1) == 'ldrrzfd'
+    assert caesar('Abcd', 2) == 'Cdef'
+    assert caesar('message', -1) == 'ldrrzfd'
+    assert caesar('ZZ Top', 3) == 'CC Wrs'
 
 if __name__ == "__main__":
     main()
