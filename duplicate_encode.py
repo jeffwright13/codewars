@@ -17,13 +17,19 @@ def duplicate_encode(word):
 
     "(( @" => "))(("
     """
-    return None
+    out = []
+    for char in word.lower():
+        if word.lower().count(char) == 1:
+            out.append('(')
+        else:
+            out.append(')')
+    return ''.join(out)
 
 def test_duplicate_encode():
     assert duplicate_encode('din') == '((('
     assert duplicate_encode('recede') == '()()()'
     assert duplicate_encode('Success') == ')())())'
-    assert duplicate_encode('(( @"),') == '))(('
+    assert duplicate_encode('(( @') == '))(('
 
 if __name__ == "__main__":
     main()
