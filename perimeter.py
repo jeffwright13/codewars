@@ -19,18 +19,34 @@ alternative text
 Hint:
 
 See Fibonacci sequence and beware of rather big n:-)
-Ref:
-
-http://oeis.org/A000045
+Ref: http://oeis.org/A000045
 
 The perimeter perimeter has for parameter n where n + 1 is the number of squares (they are numbered from 0 to n) and returns the total perimeter of all the squares.
 
 perimeter(5)  should return 80
 perimeter(7)  should return 216
     """
-    return None
+    def fibonacci(n):
+        if n<0:
+            return None
+        if n==0:
+            return 0
+        if n==1 or n==2:
+            return 1
+        else:
+            return fibonacci(n-2) + fibonacci(n-1)
+
+    area = 0
+    for k in range(1, n+1):
+        area += 4*fibonacci(k)
+    return area
 
 def test_perimeter():
+    assert perimeter(0) == 0
+    assert perimeter(1) == 4
+    assert perimeter(2) == 8
+    assert perimeter(3) == 16
+    assert perimeter(4) == 28
     assert perimeter(5) == 80
     assert perimeter(7) == 216
     assert perimeter(20) == 114624
