@@ -5,7 +5,11 @@ def double_trouble(x, t):
     """
 
     """
-    return []
+    out = [x[0]]
+    for i in range(1, len(x)):
+        if x[i-1] + x[i] != t:
+            out.append(x[i])
+    return out
 
 def test_double_trouble():
     assert double_trouble([1, 3, 5, 6, 7, 4, 3], 7) == [1, 3, 5, 6, 7, 4]
