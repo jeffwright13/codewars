@@ -23,10 +23,27 @@ def shoot(results):
 
     [[{P1:'XX', P2:'XO'}, true], [{P1:'OX', P2:'OO'}, false], [{P1:'XX', P2:'OX'}, true]]
     """
+    P1_score = P2_score = 0
 
+    for result in results:
+        if result[1] == True:
+            mult = 2
+        else:
+            mult = 1
+        P1_score += result[0]['P1'].count('X') * mult
+        P2_score += result[0]['P2'].count('X') * mult
+    
+    if P1_score > P2_score:
+        return 'Pete Wins!'
+    elif P2_score > P1_score:
+        return 'Phil Wins!'
+    else:
+        return 'Draw!'
 
 def test_shoot():
     assert shoot([[{"P1":"XX", "P2":"XO"}, True], [{"P1":"OX", "P2":"OO"}, False], [{"P1":"XX", "P2":"OX"}, True]]) == "Pete Wins!"
+    assert shoot([[{"P1":"XX", "P2":"XO"}, False], [{"P1":"OX", "P2":"XX"}, False], [{"P1":"OO", "P2":"XX"}, True]]) == "Phil Wins!"
+    assert shoot([[{"P1":"OO", "P2":"XX"}, False], [{"P1":"OO", "P2":"XX"}, False], [{"P1":"XX", "P2":"OO"}, True]]), "Draw!"
 
 if __name__ == "__main__":
     main()
