@@ -23,13 +23,18 @@ def revrot(strng, sz):
     revrot("", 8) --> ""
     revrot("123456779", 0) --> ""
     """
-    if len(strng) == 0 or sz == 0 or sz > len(strng): return ''
+    print "strng, len(strng), sz:", strng, len(strng), sz
+    if len(strng) == 0 or sz == 0 or sz > len(strng):
+        return ''
     
     chunk = []
-    print range(0, len(strng)/sz)
+    print "range:", range(0, len(strng)/sz)
     for i in range(0, len(strng)/sz):
-        chunk[i] = strng[i:i+sz]
+        chunk.append(strng[(i*sz):(i+1)*sz])
+        print "chunk[" + str(i) + "] = " + chunk[i]
     print chunk
+    
+    
 
 def test_revrot():
     assert revrot('1234', 0) == ''
