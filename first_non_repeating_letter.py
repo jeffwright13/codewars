@@ -11,8 +11,7 @@ def first_non_repeating_letter(s):
         return s
 
     for char in s:
-        print char, s.count(char)
-        if s.count(char) == 1:
+        if s.lower().count(char.lower()) == 1:
             return char
     return ''
 
